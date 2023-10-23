@@ -1,0 +1,28 @@
+.board {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.status {
+    margin-left: max(3.5vw, 3.5vh);
+}
+
+.board-row {
+    margin-left: max(3vw, 3vh);
+    display: flex;
+}
+
+.square {
+    width: max(6vw, 6vh);
+    height: max(6vw, 6vh);
+    font-size: max(4vw, 4vh);
+}
+
+.reset {
+    margin-left: max(55vw, 55vh);
+    margin-top: max(25vw, 25vh);
+    width: max(9vw, 9vh);
+    height: max(3vw, 3vh);
+}
