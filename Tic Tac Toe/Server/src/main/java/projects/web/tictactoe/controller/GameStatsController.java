@@ -62,8 +62,7 @@ public class GameStatsController {
                   player1 = gameStats.getPlayer1().getUsername();
                   player2 = gameStats.getPlayer2().getUsername();
 
-                  if(status.equals("WON")) status = "LOSS";
-                  if(status.equals("LOSS")) status = "WON";
+                  status = status.equals("WON") ? "LOSS" : "WON";
             }
 
             switch (status) {

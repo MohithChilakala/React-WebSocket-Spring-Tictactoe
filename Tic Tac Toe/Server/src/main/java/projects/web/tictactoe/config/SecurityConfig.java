@@ -1,6 +1,7 @@
 package projects.web.tictactoe.config;
 
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -20,6 +21,9 @@ import java.util.Arrays;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+      @Value("${data.origin}")
+      private String origin;
+
       @Bean
       public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
             httpSecurity
@@ -47,7 +51,7 @@ public class SecurityConfig {
       @Bean
       public CorsConfigurationSource corsConfigurationSource() {
             CorsConfiguration configuration = new CorsConfiguration();
-            configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000", "http://127.0.0.1:3000"));
+            configuration.addAllowedOrigin(origin);
             configuration.setAllowedMethods(Arrays.asList("GET", "POST"));
             configuration.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization"));
             configuration.setAllowCredentials(true);

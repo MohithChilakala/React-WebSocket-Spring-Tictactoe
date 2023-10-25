@@ -16,6 +16,7 @@ import java.util.Map;
 @Component
 public class CustomHandShakeInterceptor extends HttpSessionHandshakeInterceptor {
       @Autowired private GameService gameService;
+      private static final String jsonErrorResponse = "{\"error\": \"Game not found\"}";
 
       @Override
       public boolean beforeHandshake(
@@ -32,8 +33,7 @@ public class CustomHandShakeInterceptor extends HttpSessionHandshakeInterceptor 
                         response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
                         response.setStatusCode(HttpStatus.NOT_FOUND);
 
-                        String jsonResponse = "{\"error\": \"Game not found\"}";
-                        response.getBody().write(jsonResponse.getBytes());
+                        response.getBody().write(jsonErrorResponse.getBytes());
                         return false;
                   }
             }
