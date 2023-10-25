@@ -19,6 +19,7 @@ import java.util.Objects;
 
 @Controller
 public class GamePlayHandler {
+      public static final String GAME = "/game/";
       @Autowired private SimpMessagingTemplate messagingTemplate;
       @Autowired private GameService gameService;
 
@@ -32,11 +33,11 @@ public class GamePlayHandler {
       }
 
       @MessageMapping("/start/{game_id}")
-      public void startGame(@DestinationVariable String game_id) {
-            Game game = gameService.RandomPlayerAssigner(game_id);
+      public void startGame(@DestinationVariable String gameId) {
+            Game game = gameService.RandomPlayerAssigner(gameId);
             game.setStatus("STARTED");
             messagingTemplate.convertAndSend(
-                    "/game/" + game_id,
+                    "/game/%s".formatted(gameId),
                     new GameResponseDto(game)
             );
       }
@@ -45,12 +46,12 @@ public class GamePlayHandler {
       public void  makeMove(@Payload GameMoveDto gameMoveDto) {
             try {
                   messagingTemplate.convertAndSend(
-                          "/game/" + gameMoveDto.getGame_id(),
+                          GAME + gameMoveDto.getGameId(),
                           gameService.makeMove(gameMoveDto)
                   );
             } catch (IllegalGameplayException e) {
                   messagingTemplate.convertAndSend(
-                          "/game/" + gameMoveDto.getGame_id(),
+                          GAME + gameMoveDto.getGameId(),
                           e.getMessage()
                   );
             }

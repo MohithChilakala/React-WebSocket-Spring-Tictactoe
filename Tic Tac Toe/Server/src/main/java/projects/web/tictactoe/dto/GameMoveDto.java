@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GameMoveDto {
-      private String game_id;
+      private String gameId;
       private String player;
       private int move;
 }

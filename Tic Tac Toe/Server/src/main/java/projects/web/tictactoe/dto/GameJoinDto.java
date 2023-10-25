@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GameJoinDto {
-      private String game_id;
+      private String gameId;
       private String password;
       private String player;
 }

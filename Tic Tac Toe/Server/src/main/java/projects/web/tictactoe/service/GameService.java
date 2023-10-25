@@ -90,7 +90,7 @@ public class GameService {
       }
 
       public GameResponseDto makeMove(GameMoveDto gameMoveDto) throws IllegalGameplayException {
-            String game_id = gameMoveDto.getGame_id();
+            String game_id = gameMoveDto.getGameId();
             int move = gameMoveDto.getMove();
             Game game = games.get(game_id);
 

@@ -27,7 +27,7 @@ public class GameController {
 
       @PostMapping("/join")
       public ResponseEntity<String> joinGame(@RequestBody GameJoinDto gameJoinDto) {
-            Game game = gameService.getGame(gameJoinDto.getGame_id());
+            Game game = gameService.getGame(gameJoinDto.getGameId());
             if(game == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             else {
                   if(!game.getPassword().equals(gameJoinDto.getPassword())) return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
