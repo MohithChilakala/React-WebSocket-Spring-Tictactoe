@@ -1,5 +1,7 @@
+import { getApiUrl } from "./GetApiUrl";
+
 export const createAccount = async (username, password) => {
-  const response = await fetch('http://localhost:8080/account', {
+  const response = await fetch(getApiUrl('account'), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -14,7 +16,7 @@ export const createAccount = async (username, password) => {
 }
 
 export const isLoggined = async (authorization) => {
-  const response = await fetch('http://localhost:8080/account/login', {
+  const response = await fetch(getApiUrl('account/login'), {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -25,7 +27,7 @@ export const isLoggined = async (authorization) => {
 }
 
 export const getProfile = async (username, authorization) => {
-  const response = await fetch('http://localhost:8080/account/' + username, {
+  const response = await fetch(getApiUrl('account/' + username), {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

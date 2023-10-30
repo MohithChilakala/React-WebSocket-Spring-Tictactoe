@@ -1,7 +1,6 @@
 package projects.web.tictactoe.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.ChannelRegistration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
@@ -16,14 +15,13 @@ import projects.web.tictactoe.ws.WebSocketAuthInterceptor;
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
       @Autowired private CustomHandShakeInterceptor customHandShakeInterceptor;
       @Autowired private WebSocketAuthInterceptor webSocketAuthInterceptor;
-      @Value("{data.origin}") private String origin;
 
       @Override
       public void registerStompEndpoints(StompEndpointRegistry registry) {
             registry
                     .addEndpoint("/ws")
                     .addInterceptors(customHandShakeInterceptor)
-                    .setAllowedOrigins(origin)
+                    .setAllowedOrigins("http://tic-tac-toe-4124.s3-website.ap-south-1.amazonaws.com")
                     .withSockJS();
       }
 

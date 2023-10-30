@@ -18,14 +18,18 @@ export const CreateRoom = () => {
           password: password
         };
         const query = new URLSearchParams(propsToPass).toString();
-        
-        const roomUrl = 'http://localhost:3000/game/' + data + `/?${query}`;
-        navigator.clipboard.writeText(roomUrl);
-        alert('room url: ' + roomUrl + ' copied');
+        const roomUrl = `/game/${data}?${query}`;
+
+        const textArea = document.createElement("textarea");
+        textArea.value = 'http://tic-tac-toe-4124.s3-website.ap-south-1.amazonaws.com' + roomUrl;
+        document.body.appendChild(textArea);
+        textArea.focus();textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+
+        alert('roomurl copied share to your friends');
         setPassword('');
-        setTimeout(() => {
-          window.open(roomUrl, '_blank', 'noreferrer');
-        }, 100);
+        navigate(roomUrl);
       });
     }
     else navigate('/');

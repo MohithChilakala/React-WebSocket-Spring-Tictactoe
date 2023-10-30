@@ -51,7 +51,7 @@ export const UserProfile = () => {
       <h1 className="username">{profile.username}</h1>
       <div>
         <h2 className="stats">Game Stats</h2>
-        <ul class="playerStats">
+        <ul className="playerStats">
           <li><span>Games Played:</span> {profile.gamesPlayed} </li>
           <li><span>Games Won:</span> {profile.gamesWon} </li>
           <li><span>Games Lost:</span> {profile.gamesLost} </li>

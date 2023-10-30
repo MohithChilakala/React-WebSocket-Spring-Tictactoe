@@ -32,34 +32,42 @@
   color: #000;
 }
 
-.create-room {
-  width: max-content;
+@media screen and (min-width: 1000px) {
+  .room {
+    display: flex;
+    justify-content: space-between;
+    width: 55%;
+  }
+}
+
+.create-room, .join-room {
+  width: min(max-content, 30vh);
   margin: min(auto, 1em);
 }
 
-.create-room-form {
+.create-room-form, .join-room-form {
   padding: 1.2rem;
   border: 1px solid #ccc;
   border-radius: 0.4rem;
   background-color: #f4f4f4;
 }
 
-.create-room-form > h3 {
+.create-room-form > h3, .join-room-form > h3 {
   margin: 0;
   padding: 0;
 }
 
-.create-room-form > div {
+.create-room-form > div, .join-room-form > div {
   display: flex;
 }
 
-.create-room label {
+.create-room label, .join-room label {
   color: #333;
   margin-right: 1rem;
   width: 5rem;
 }
 
-.create-room input {
+.create-room input, .join-room input {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 0.4rem;

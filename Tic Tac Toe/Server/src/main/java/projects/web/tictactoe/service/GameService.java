@@ -1,7 +1,9 @@
 package projects.web.tictactoe.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import projects.web.tictactoe.controller.GameStatsController;
 import projects.web.tictactoe.dto.GameMoveDto;
 import projects.web.tictactoe.dto.GameResponseDto;
 import projects.web.tictactoe.exception.IllegalGameplayException;
@@ -11,6 +13,7 @@ import java.util.*;
 
 @Service
 public class GameService {
+      @Autowired private GameStatsController gameStatsController;
       private final Map<String, Game> games = new HashMap<>();
       private int currentGame = 68 * 67;
 
@@ -109,8 +112,21 @@ public class GameService {
             game.setPlayer1Turn(!game.isPlayer1Turn());
             game.setLastUpdatedInMilli(System.currentTimeMillis());
 
-            if(isWinnerFound(game)) game.setStatus("WINNER");
-            else if(isDraw(game)) game.setStatus("DRAW");
+            if(isWinnerFound(game)) {
+                  game.setStatus("WINNER");
+                  gameStatsController.updateStats(
+                          game.getPlayer1(),
+                          game.getPlayer2(),
+                          game.isPlayer1Turn() ? "LOSS" : "WON"
+                  );
+            } else if(isDraw(game)) {
+                  game.setStatus("DRAW");
+                  gameStatsController.updateStats(
+                          game.getPlayer1(),
+                          game.getPlayer2(),
+                          "DRAW"
+                  );
+            }
 
             games.put(game_id, game);
             return new GameResponseDto(game);

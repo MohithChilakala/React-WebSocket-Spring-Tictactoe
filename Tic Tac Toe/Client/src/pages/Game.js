@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { GameBoard } from "../component/game/GameBoard";
 import { joinRoom } from "../services/GameService";
 import { getCookie } from "../services/CookieService";
+import { getApiUrl } from "../services/GetApiUrl";
 import { over } from "stompjs";
 import SockJS from "sockjs-client";
 import { useEffect, useState } from "react";
@@ -27,7 +28,7 @@ const Game = () => {
 
       var stompClient = null;
       const connect = () => {
-        let Sock = new SockJS("http://localhost:8080/ws?game_id=" + game_id, null, {
+        let Sock = new SockJS(getApiUrl('ws?game_id=' + game_id), null, {
           transports: ["websocket", "xhr-streaming"],
         });
         stompClient = over(Sock);

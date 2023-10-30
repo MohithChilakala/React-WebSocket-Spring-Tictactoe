@@ -10,14 +10,14 @@
 }
 
 .board-row {
-    margin-left: max(3vw, 3vh);
+    margin-left: max(3vw, 4.55vh);
     display: flex;
 }
 
 .square {
-    width: max(6vw, 6vh);
-    height: max(6vw, 6vh);
-    font-size: max(4vw, 4vh);
+    width: max(6vw, 9vh);
+    height: max(6vw, 9vh);
+    font-size: max(4vw, 6vh);
 }
 
 .reset {

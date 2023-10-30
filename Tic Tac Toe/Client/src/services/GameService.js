@@ -1,5 +1,7 @@
+import { getApiUrl } from "./GetApiUrl";
+
 export const createRoom = async (host, password, authorization) => {
-  const response = await fetch("http://localhost:8080/game/create-room", {
+  const response = await fetch(getApiUrl('game/create-room'), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -15,7 +17,7 @@ export const createRoom = async (host, password, authorization) => {
 };
 
 export const joinRoom = async (game_id, password, player, authorization) => {
-  const response = await fetch('http://localhost:8080/game/join', {
+  const response = await fetch(getApiUrl('game/join'), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

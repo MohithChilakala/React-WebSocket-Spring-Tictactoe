@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/tic_tac_toe
-    username: root
-    password: Mohith@4124
+    url: jdbc:mysql://tic-tac-toe.czxyfwalh1hj.ap-south-1.rds.amazonaws.com:3306/tic_tac_toe
+    username: Mohith
+    password: Mohith4124
   task:
     scheduling:
       enabled: true
@@ -16,4 +16,4 @@ spring:
         format_sql: true
 
 data:
-  origin: http://localhost:3000
+  origin: http://tic-tac-toe-4124.s3-website.ap-south-1.amazonaws.com
