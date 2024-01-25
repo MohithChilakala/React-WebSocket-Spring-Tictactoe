@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://tic-tac-toe.czxyfwalh1hj.ap-south-1.rds.amazonaws.com:3306/tic_tac_toe
-    username: Mohith
-    password: Mohith4124
+    url: jdbc:mysql://your-host:3306/db_name
+    username: your-username
+    password: your-password
   task:
     scheduling:
       enabled: true
